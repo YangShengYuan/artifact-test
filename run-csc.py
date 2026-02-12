@@ -11,10 +11,10 @@ ANALYSIS_PATTERN = ['csc-f', 'csc-fc', 'csc-fcl', 'ci']
 ANALYSIS_COMPARE = ['csc', 'ze-2obj']
 UNSCALABLE = [ ['freecol','2obj'], ['freecol','2type'],['briss','2obj'], ['briss','2type'], ['hsqldb','2obj'],
                ['gruntspud','2obj'], ['jython','2obj'], ['soot','2obj'], ['columba','2obj'], ['gruntspud','2type'], ['soot','2type'], ['columba','2type'],['jython','2type']]
-FORCED = False
+FORCED = True
 
 def exec(app, jdk, analysis, involved = False):
-    cmd = 'java -Xms128g -Xmx128g -XX:+UseG1GC -jar tai-e-csc.jar '
+    cmd = 'java -Xms256g -Xmx256g -XX:+UseG1GC -jar tai-e-csc.jar '
     # app
     if [app, analysis] in UNSCALABLE and not FORCED:
         return
@@ -125,6 +125,13 @@ def run(args):
     elif args[0] == 'jdk6' or args[0] == 'jdk8':
         FORCED = True
         exec(args[2], int(args[0][-1]), args[1])
+    # run all analysis on a given benchmark
+    # run-csc.py eclipse
+    elif args[0] in APPS.keys():
+        FORCED = True
+        jdk = 6
+        for analysis in ANALYSIS:
+            exec(args[0], jdk, analysis)
     else:
         print("wrong task")
 
