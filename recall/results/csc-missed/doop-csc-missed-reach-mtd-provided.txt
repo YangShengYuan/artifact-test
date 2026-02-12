@@ -1,0 +1,2 @@
+<java.io.FilterInputStream: int available()>
+<java.util.zip.InflaterInputStream: boolean markSupported()>

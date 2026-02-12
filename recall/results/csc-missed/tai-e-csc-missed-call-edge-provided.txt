@@ -1,0 +1,11 @@
+<java.io.FilterInputStream: int read(byte[],int,int)>/java.io.InputStream.read/0	<java.io.BufferedInputStream: int read(byte[],int,int)>
+<sun.reflect.AccessorGenerator: java.lang.String getClassName(java.lang.Class,boolean)>/java.lang.Class.getName/0	<java.lang.Class: java.lang.String getName()>
+<sun.reflect.AccessorGenerator: java.lang.String getClassName(java.lang.Class,boolean)>/java.lang.Class.getName/1	<java.lang.Class: java.lang.String getName()>
+<sun.reflect.MethodAccessorGenerator$1: java.lang.Object run()>/java.lang.Class.getClassLoader/0	<java.lang.Class: java.lang.ClassLoader getClassLoader()>
+<java.io.BufferedInputStream: int read(byte[],int,int)>/java.io.InputStream.available/0	<java.io.FilterInputStream: int available()>
+<java.io.FilterInputStream: int available()>/java.io.InputStream.available/0	<java.util.zip.ZipFile$1: int available()>
+<java.io.FilterInputStream: int available()>/java.io.InputStream.available/0	<java.util.zip.ZipFile$ZipFileInputStream: int available()>
+<java.io.FilterInputStream: int read(byte[],int,int)>/java.io.InputStream.read/0	<java.util.zip.InflaterInputStream: int read(byte[],int,int)>
+<java.io.FilterInputStream: int read(byte[],int,int)>/java.io.InputStream.read/0	<java.util.zip.ZipFile$ZipFileInputStream: int read(byte[],int,int)>
+<java.io.FilterInputStream: void close()>/java.io.InputStream.close/0	<java.util.zip.ZipFile$1: void close()>
+<java.io.FilterInputStream: void close()>/java.io.InputStream.close/0	<java.util.zip.ZipFile$ZipFileInputStream: void close()>
