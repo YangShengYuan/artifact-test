@@ -16,7 +16,7 @@ PROGRAMS = ['renai-stm', 'ws4j', 'amazon-sqs', 'jbayes', 'finmath']
 def exec(app, analysis):
     # exampler java execution argument
     # stm-map -java=8 -cs=ci -advanced=cut-shortcut-S -distinguishStringConstant=null -stream=1
-    cmd = 'java -Xms100g -Xmx100g -XX:+UseG1GC -jar tai-e-csc.jar '
+    cmd = 'java -Xms256g -Xmx256g -XX:+UseG1GC -jar tai-e-csc.jar '
     # app
     cmd += '%s ' % (app)
     # jdk
@@ -71,21 +71,21 @@ def exec(app, analysis):
         cmd += '-stream=2'
     else:
         cmd += '-stream=1'
-    print(cmd)
-    print(Fore.YELLOW + Style.BRIGHT + 'Running ' + analysis + ' for ' + app + ' on Tai-e ... ' + Style.RESET_ALL)
-    os.system(cmd)
-    # move pta-ci-results and stream-target infos
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    pts_src_path = os.path.join(base_dir, 'output', 'pta-ci-results.txt')
-    pts_dst_path = os.path.join(base_dir, 'stream-out', '%s-%s-pts.txt' % (app, analysis))
-    shutil.move(pts_src_path, pts_dst_path)
-    if analysis == 'csc-s':
-        stm_out_src_path = os.path.join(base_dir, 'output', 'stream-target.txt')
-        stm_out_dst_path = os.path.join(base_dir, 'stream-out', '%s-%s-stream-target.txt' % (app, analysis))
-        shutil.move(stm_out_src_path, stm_out_dst_path)
-        stm_coll_out_src_path = os.path.join(base_dir, 'output', 'stm-related-container-target.txt')
-        stm_coll_out_dst_path = os.path.join(base_dir, 'stream-out', '%s-%s-stm-related-container-target.txt' % (app, analysis))
-        shutil.move(stm_coll_out_src_path, stm_coll_out_dst_path)
+    # print(cmd)
+    # print(Fore.YELLOW + Style.BRIGHT + 'Running ' + analysis + ' for ' + app + ' on Tai-e ... ' + Style.RESET_ALL)
+    # os.system(cmd)
+    # # move pta-ci-results and stream-target infos
+    # base_dir = os.path.dirname(os.path.abspath(__file__))
+    # pts_src_path = os.path.join(base_dir, 'output', 'pta-ci-results.txt')
+    # pts_dst_path = os.path.join(base_dir, 'stream-out', '%s-%s-pts.txt' % (app, analysis))
+    # shutil.move(pts_src_path, pts_dst_path)
+    # if analysis == 'csc-s':
+    #     stm_out_src_path = os.path.join(base_dir, 'output', 'stream-target.txt')
+    #     stm_out_dst_path = os.path.join(base_dir, 'stream-out', '%s-%s-stream-target.txt' % (app, analysis))
+    #     shutil.move(stm_out_src_path, stm_out_dst_path)
+    #     stm_coll_out_src_path = os.path.join(base_dir, 'output', 'stm-related-container-target.txt')
+    #     stm_coll_out_dst_path = os.path.join(base_dir, 'stream-out', '%s-%s-stm-related-container-target.txt' % (app, analysis))
+    #     shutil.move(stm_coll_out_src_path, stm_coll_out_dst_path)
 
 def run_synthetics():
     for app in SYNTHETICS:
