@@ -71,9 +71,9 @@ def exec(app, analysis):
         cmd += '-stream=2'
     else:
         cmd += '-stream=1'
-    # print(cmd)
-    # print(Fore.YELLOW + Style.BRIGHT + 'Running ' + analysis + ' for ' + app + ' on Tai-e ... ' + Style.RESET_ALL)
-    # os.system(cmd)
+    print(cmd)
+    print(Fore.YELLOW + Style.BRIGHT + 'Running ' + analysis + ' for ' + app + ' on Tai-e ... ' + Style.RESET_ALL)
+    os.system(cmd)
     # # move pta-ci-results and stream-target infos
     # base_dir = os.path.dirname(os.path.abspath(__file__))
     # pts_src_path = os.path.join(base_dir, 'output', 'pta-ci-results.txt')
