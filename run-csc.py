@@ -62,29 +62,29 @@ def exec(app, jdk, analysis, involved = False):
     print(cmd)
     print(Fore.YELLOW + Style.BRIGHT + 'Running ' + analysis + ' for ' + app + ' on Tai-e ... ' + Style.RESET_ALL)
     os.system(cmd)
-    # move call-edge and reach-mtd outputs
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    edge_src_path = os.path.join(base_dir, 'output', 'call-edges.txt')
-    edge_dst_path = os.path.join(base_dir, 'recall', '%s-%s-call-edge.txt' % (app, analysis))
-    shutil.move(edge_src_path, edge_dst_path)
-    mtd_src_path = os.path.join(base_dir, 'output', 'reachable-methods.txt')
-    mtd_dst_path = os.path.join(base_dir, 'recall', '%s-%s-reach-mtd.txt' % (app, analysis))
-    shutil.move(mtd_src_path, mtd_dst_path)
-    # move involved methods outputs
-    if analysis == 'ze-2obj' and involved:
-        zippere_selected_src_path = os.path.join(base_dir, 'output', 'zippere-selected-methods.txt')
-        zippere_selected_dst_path = os.path.join(base_dir, 'involved-methods', '%s-zippere-selected-methods.txt' % (app))
-        shutil.move(zippere_selected_src_path, zippere_selected_dst_path)
-    if analysis == 'csc' and involved:
-        merged_src_path = os.path.join(base_dir, 'output', 'csc-involved-methods.txt')
-        with open(merged_src_path, 'w', encoding='utf-8') as merged_methods:
-            for part in ['store', 'load', 'c', 'l']:
-                infile = os.path.join(base_dir, 'output', 'csc-%s-involved-methods.txt'% (part))
-                with open(infile, 'r', encoding='utf-8') as part_methods:
-                    for line in part_methods:
-                        merged_methods.write(line)
-        merged_dst_path = os.path.join(base_dir, 'involved-methods', '%s-csc-involved-methods.txt' % (app))
-        shutil.move(merged_src_path, merged_dst_path)
+    # # move call-edge and reach-mtd outputs
+    # base_dir = os.path.dirname(os.path.abspath(__file__))
+    # edge_src_path = os.path.join(base_dir, 'output', 'call-edges.txt')
+    # edge_dst_path = os.path.join(base_dir, 'recall', '%s-%s-call-edge.txt' % (app, analysis))
+    # shutil.move(edge_src_path, edge_dst_path)
+    # mtd_src_path = os.path.join(base_dir, 'output', 'reachable-methods.txt')
+    # mtd_dst_path = os.path.join(base_dir, 'recall', '%s-%s-reach-mtd.txt' % (app, analysis))
+    # shutil.move(mtd_src_path, mtd_dst_path)
+    # # move involved methods outputs
+    # if analysis == 'ze-2obj' and involved:
+    #     zippere_selected_src_path = os.path.join(base_dir, 'output', 'zippere-selected-methods.txt')
+    #     zippere_selected_dst_path = os.path.join(base_dir, 'involved-methods', '%s-zippere-selected-methods.txt' % (app))
+    #     shutil.move(zippere_selected_src_path, zippere_selected_dst_path)
+    # if analysis == 'csc' and involved:
+    #     merged_src_path = os.path.join(base_dir, 'output', 'csc-involved-methods.txt')
+    #     with open(merged_src_path, 'w', encoding='utf-8') as merged_methods:
+    #         for part in ['store', 'load', 'c', 'l']:
+    #             infile = os.path.join(base_dir, 'output', 'csc-%s-involved-methods.txt'% (part))
+    #             with open(infile, 'r', encoding='utf-8') as part_methods:
+    #                 for line in part_methods:
+    #                     merged_methods.write(line)
+    #     merged_dst_path = os.path.join(base_dir, 'involved-methods', '%s-csc-involved-methods.txt' % (app))
+    #     shutil.move(merged_src_path, merged_dst_path)
 
 def run_csc_exp():
     apps = APPS.keys()
